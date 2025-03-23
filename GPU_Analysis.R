@@ -38,7 +38,7 @@ print("Nvidia Start")
 df.nvidia$Generation <- as.factor(df.nvidia$Generation)
 
 nvSP <- ggplot(df.nvidia, aes(x = SP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -52,7 +52,7 @@ nvSP <- ggplot(df.nvidia, aes(x = SP, y = Score, color = Generation)) +
         color = "Generation") 
 
 nvTMU <- ggplot(df.nvidia, aes(x = TMU, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -65,7 +65,7 @@ nvTMU <- ggplot(df.nvidia, aes(x = TMU, y = Score, color = Generation)) +
         color = "Generation") 
 
 nvROP <- ggplot(df.nvidia, aes(x = ROP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -78,7 +78,7 @@ nvROP <- ggplot(df.nvidia, aes(x = ROP, y = Score, color = Generation)) +
         color = "Generation")
 
 nvMSRP <- ggplot(df.nvidia, aes(x = MSRP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -92,7 +92,7 @@ nvMSRP <- ggplot(df.nvidia, aes(x = MSRP, y = Score, color = Generation)) +
         color = "Generation")
 
 nvTransistors <- ggplot(df.nvidia, aes(x = Transistors, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -105,7 +105,7 @@ nvTransistors <- ggplot(df.nvidia, aes(x = Transistors, y = Score, color = Gener
         color = "Generation")
 
 nvConfig <- ggplot(df.nvidia, aes(x = Config, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -128,7 +128,7 @@ ggsave("plot\\NVIDIA\\nvidiaConfig.png", nvConfig, width = 10, height = 12)
 
 nvMSRPtoTransistors <- ggplot(df.nvidia, aes
 (x = MSRP, y = Transistors, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -142,7 +142,7 @@ nvMSRPtoTransistors <- ggplot(df.nvidia, aes
         color = "Generation")
 
 nvMSRPtoVRAM <- ggplot(df.nvidia, aes(x = MSRP, y = VRAM, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -157,7 +157,7 @@ nvMSRPtoVRAM <- ggplot(df.nvidia, aes(x = MSRP, y = VRAM, color = Generation)) +
         color = "Generation")
 
 nvMSRPtoSP <- ggplot(df.nvidia, aes(x = MSRP, y = SP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -171,7 +171,7 @@ nvMSRPtoSP <- ggplot(df.nvidia, aes(x = MSRP, y = SP, color = Generation)) +
         color = "Generation")
 
 nvMSRPtoTMU <- ggplot(df.nvidia, aes(x = MSRP, y = TMU, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -185,7 +185,7 @@ nvMSRPtoTMU <- ggplot(df.nvidia, aes(x = MSRP, y = TMU, color = Generation)) +
         color = "Generation")
 
 nvMSRPtoROP <- ggplot(df.nvidia, aes(x = MSRP, y = ROP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -199,7 +199,7 @@ nvMSRPtoROP <- ggplot(df.nvidia, aes(x = MSRP, y = ROP, color = Generation)) +
         color = "Generation")
 
 nvMSRPtoConfig <- ggplot(df.nvidia, aes(x = MSRP, y = Config, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -231,7 +231,7 @@ print("Intel Start")
 df.intel$Generation <- as.factor(df.intel$Generation)
 
 intelSP <- ggplot(df.intel, aes(x = SP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -244,7 +244,7 @@ intelSP <- ggplot(df.intel, aes(x = SP, y = Score, color = Generation)) +
          color = "Generation")
 
 intelTMU <- ggplot(df.intel, aes(x = TMU, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -257,7 +257,7 @@ intelTMU <- ggplot(df.intel, aes(x = TMU, y = Score, color = Generation)) +
          color = "Generation")
 
 intelROP <- ggplot(df.intel, aes(x = ROP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -270,7 +270,7 @@ intelROP <- ggplot(df.intel, aes(x = ROP, y = Score, color = Generation)) +
          color = "Generation")
 
 intelMSRP <- ggplot(df.intel, aes(x = MSRP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -284,7 +284,7 @@ intelMSRP <- ggplot(df.intel, aes(x = MSRP, y = Score, color = Generation)) +
          color = "Generation")
 
 intelTransistors <- ggplot(df.intel, aes(x = Transistors, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -297,7 +297,7 @@ intelTransistors <- ggplot(df.intel, aes(x = Transistors, y = Score, color = Gen
          color = "Generation")
 
 intelConfig <- ggplot(df.intel, aes(x = Config, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -317,7 +317,7 @@ ggsave("plot\\Intel\\intelTransistors.png", intelTransistors, width = 10, height
 ggsave("plot\\Intel\\intelConfig.png", intelConfig, width = 10, height = 12)
 
 intelMSRPtoTransistors <- ggplot(df.intel, aes(x = MSRP, y = Transistors, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -331,7 +331,7 @@ intelMSRPtoTransistors <- ggplot(df.intel, aes(x = MSRP, y = Transistors, color 
          color = "Generation")
 
 intelMSRPtoVRAM <- ggplot(df.intel, aes(x = MSRP, y = VRAM, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -346,7 +346,7 @@ intelMSRPtoVRAM <- ggplot(df.intel, aes(x = MSRP, y = VRAM, color = Generation))
          color = "Generation")
 
 intelMSRPtoSP <- ggplot(df.intel, aes(x = MSRP, y = SP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -360,7 +360,7 @@ intelMSRPtoSP <- ggplot(df.intel, aes(x = MSRP, y = SP, color = Generation)) +
          color = "Generation")
 
 intelMSRPtoTMU <- ggplot(df.intel, aes(x = MSRP, y = TMU, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -374,7 +374,7 @@ intelMSRPtoTMU <- ggplot(df.intel, aes(x = MSRP, y = TMU, color = Generation)) +
          color = "Generation")
 
 intelMSRPtoROP <- ggplot(df.intel, aes(x = MSRP, y = ROP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -388,7 +388,7 @@ intelMSRPtoROP <- ggplot(df.intel, aes(x = MSRP, y = ROP, color = Generation)) +
          color = "Generation")
 
 intelMSRPtoConfig <- ggplot(df.intel, aes(x = MSRP, y = Config, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -419,7 +419,7 @@ print("AMD Start")
 df.amd$Generation <- as.factor(df.amd$Generation)
 
 amdSP <- ggplot(df.amd, aes(x = SP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -432,7 +432,7 @@ amdSP <- ggplot(df.amd, aes(x = SP, y = Score, color = Generation)) +
          color = "Generation")
 
 amdTMU <- ggplot(df.amd, aes(x = TMU, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -445,7 +445,7 @@ amdTMU <- ggplot(df.amd, aes(x = TMU, y = Score, color = Generation)) +
          color = "Generation")
 
 amdROP <- ggplot(df.amd, aes(x = ROP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -458,7 +458,7 @@ amdROP <- ggplot(df.amd, aes(x = ROP, y = Score, color = Generation)) +
          color = "Generation")
 
 amdMSRP <- ggplot(df.amd, aes(x = MSRP, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -472,7 +472,7 @@ amdMSRP <- ggplot(df.amd, aes(x = MSRP, y = Score, color = Generation)) +
          color = "Generation")
 
 amdTransistors <- ggplot(df.amd, aes(x = Transistors, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -485,7 +485,7 @@ amdTransistors <- ggplot(df.amd, aes(x = Transistors, y = Score, color = Generat
          color = "Generation")
 
 amdConfig <- ggplot(df.amd, aes(x = Config, y = Score, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -505,7 +505,7 @@ ggsave("plot\\AMD\\amdTransistors.png", amdTransistors, width = 10, height = 12)
 ggsave("plot\\AMD\\amdConfig.png", amdConfig, width = 10, height = 12)
 
 amdMSRPtoTransistors <- ggplot(df.amd, aes(x = MSRP, y = Transistors, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -519,7 +519,7 @@ amdMSRPtoTransistors <- ggplot(df.amd, aes(x = MSRP, y = Transistors, color = Ge
          color = "Generation")
 
 amdMSRPtoVRAM <- ggplot(df.amd, aes(x = MSRP, y = VRAM, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -534,7 +534,7 @@ amdMSRPtoVRAM <- ggplot(df.amd, aes(x = MSRP, y = VRAM, color = Generation)) +
          color = "Generation")
 
 amdMSRPtoSP <- ggplot(df.amd, aes(x = MSRP, y = SP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -548,7 +548,7 @@ amdMSRPtoSP <- ggplot(df.amd, aes(x = MSRP, y = SP, color = Generation)) +
          color = "Generation")
 
 amdMSRPtoTMU <- ggplot(df.amd, aes(x = MSRP, y = TMU, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -562,7 +562,7 @@ amdMSRPtoTMU <- ggplot(df.amd, aes(x = MSRP, y = TMU, color = Generation)) +
          color = "Generation")
 
 amdMSRPtoROP <- ggplot(df.amd, aes(x = MSRP, y = ROP, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
@@ -576,7 +576,7 @@ amdMSRPtoROP <- ggplot(df.amd, aes(x = MSRP, y = ROP, color = Generation)) +
          color = "Generation")
 
 amdMSRPtoConfig <- ggplot(df.amd, aes(x = MSRP, y = Config, color = Generation)) +
-    geom_point(alpha = 0.6) +
+    geom_point()+
     geom_text_repel(aes(label = GPU),
                     size = 4,
                     max.overlaps = Inf,
