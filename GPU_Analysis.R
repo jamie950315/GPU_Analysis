@@ -17,21 +17,18 @@ if(budgetCard){
     print(paste("Budget: ", budget))
 }
 
-
 if(VRAMSpecfied){
     df.intel<-subset(df.intel, VRAM==VRAMLimit)
     df.amd<-subset(df.amd, VRAM==VRAMLimit)
     df.nvidia<-subset(df.nvidia, VRAM==VRAMLimit)
+
+    print("VRAM Specified")
+    print(paste("VRAM: ", VRAMLimit))
 }
-
-
 
 require("useful")
 require("ggrepel")
 
-print(names(df.nvidia))
-print(df.nvidia$GPU)
-print(df.nvidia$`Generation`)
 
 print("Starting...")
 
