@@ -117,6 +117,33 @@ nvConfig <- ggplot(df.nvidia, aes(x = Config, y = Score, color = Generation)) +
         y = "Score",
         color = "Generation")
 
+nvFP16 <- ggplot(df.nvidia, aes(x = FP16, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "FP16 - Score",
+        x = "FP16",
+        y = "Score",
+        color = "Generation")
+
+nvTDP <- ggplot(df.nvidia, aes(x = TDP, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "TDP - Score",
+        x = "TDP",
+        y = "Score",
+        color = "Generation")
+
+
 
 ggsave("plot\\NVIDIA\\nvidiaSP.png", nvSP, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvidiaTMU.png", nvTMU, width = 10, height = 12)
@@ -124,6 +151,9 @@ ggsave("plot\\NVIDIA\\nvidiaROP.png", nvROP, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvidiaMSRP.png", nvMSRP, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvidiaTransistors.png", nvTransistors, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvidiaConfig.png", nvConfig, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvidiaFP16.png", nvFP16, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvidiaTDP.png", nvTDP, width = 10, height = 12)
+
 
 
 nvMSRPtoTransistors <- ggplot(df.nvidia, aes
@@ -212,12 +242,130 @@ nvMSRPtoConfig <- ggplot(df.nvidia, aes(x = MSRP, y = Config, color = Generation
         y = "Config",
         color = "Generation")
 
+nvMSRPtoFP16 <- ggplot(df.nvidia, aes(x = MSRP, y = FP16, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(seq(300, 2000, by = 200),2000,2500)) +
+    labs(title = "MSRP - FP16",
+        x = "MSRP",
+        y = "FP16",
+        color = "Generation")
+
+nvMSRPtoTDP <- ggplot(df.nvidia, aes(x = MSRP, y = TDP, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(seq(300, 2000, by = 200),2000,2500)) +
+    labs(title = "MSRP - TDP",
+        x = "MSRP",
+        y = "TDP",
+        color = "Generation")
+
+
 ggsave("plot\\NVIDIA\\nvMSRPtoTransistors.png", nvMSRPtoTransistors, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvMSRPtoVRAM.png", nvMSRPtoVRAM, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvMSRPtoSP.png", nvMSRPtoSP, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvMSRPtoTMU.png", nvMSRPtoTMU, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvMSRPtoROP.png", nvMSRPtoROP, width = 10, height = 12)
 ggsave("plot\\NVIDIA\\nvMSRPtoConfig.png", nvMSRPtoConfig, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvMSRPtoFP16.png", nvMSRPtoFP16, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvMSRPtoTDP.png", nvMSRPtoTDP, width = 10, height = 12)
+
+
+nvGentoScore <- ggplot(df.nvidia, aes(x = Generation, y = Score, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - Score",
+         x = "Generation",
+         y = "Score",
+         color = "Generation")
+
+nvGentoFP16 <- ggplot(df.nvidia, aes(x = Generation, y = FP16, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - FP16",
+         x = "Generation",
+         y = "FP16",
+         color = "Generation")
+
+nvGentoTDP <- ggplot(df.nvidia, aes(x = Generation, y = TDP, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 300, by=10)) +
+    labs(title = "Generation - TDP",
+         x = "Generation",
+         y = "TDP",
+         color = "Generation")
+
+nvGentoVRAM <- ggplot(df.nvidia, aes(x = Generation, y = VRAM, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 32, by=2)) +
+    labs(title = "Generation - VRAM",
+         x = "Generation",
+         y = "VRAM",
+         color = "Generation")
+
+nvGentoTransistors <- ggplot(df.nvidia, aes(x = Generation, y = Transistors, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title= "Generation - Transistors",
+         x = "Generation",
+         y = "Transistors",
+         color = "Generation")
+
+nvGentoConfig <- ggplot(df.nvidia, aes(x = Generation, y = Config, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 5000, by=200)) +
+    labs(title = "Generation - Config",
+         x = "Generation",
+         y = "Config",
+         color = "Generation")
+
+ggsave("plot\\NVIDIA\\nvGentoScore.png", nvGentoScore, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvGentoFP16.png", nvGentoFP16, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvGentoTDP.png", nvGentoTDP, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvGentoVRAM.png", nvGentoVRAM, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvGentoTransistors.png", nvGentoTransistors, width = 10, height = 12)
+ggsave("plot\\NVIDIA\\nvGentoConfig.png", nvGentoConfig, width = 10, height = 12)
+
 
 
 print("Nvidia Complete")
@@ -309,12 +457,41 @@ intelConfig <- ggplot(df.intel, aes(x = Config, y = Score, color = Generation)) 
          y = "Score",
          color = "Generation")
 
+intelFP16 <- ggplot(df.intel, aes(x = FP16, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "FP16 - Score",
+         x = "FP16",
+         y = "Score",
+         color = "Generation")
+
+intelTDP <- ggplot(df.intel, aes(x = TDP, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "TDP - Score",
+         x = "TDP",
+         y = "Score",
+         color = "Generation")
+
+
 ggsave("plot\\Intel\\intelSP.png", intelSP, width = 10, height = 12)
 ggsave("plot\\Intel\\intelTMU.png", intelTMU, width = 10, height = 12)
 ggsave("plot\\Intel\\intelROP.png", intelROP, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRP.png", intelMSRP, width = 10, height = 12)
 ggsave("plot\\Intel\\intelTransistors.png", intelTransistors, width = 10, height = 12)
 ggsave("plot\\Intel\\intelConfig.png", intelConfig, width = 10, height = 12)
+ggsave("plot\\Intel\\intelFP16.png", intelFP16, width = 10, height = 12)
+ggsave("plot\\Intel\\intelTDP.png", intelTDP, width = 10, height = 12)
 
 intelMSRPtoTransistors <- ggplot(df.intel, aes(x = MSRP, y = Transistors, color = Generation)) +
     geom_point()+
@@ -401,12 +578,132 @@ intelMSRPtoConfig <- ggplot(df.intel, aes(x = MSRP, y = Config, color = Generati
          y = "Config",
          color = "Generation")
 
+intelMSRPtoFP16 <- ggplot(df.intel, aes(x = MSRP, y = FP16, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(180, 220, 250, 290, 330)) +
+    labs(title = "MSRP - FP16",
+         x = "MSRP",
+         y = "FP16",
+         color = "Generation")
+
+intelMSRPtoTDP <- ggplot(df.intel, aes(x = MSRP, y = TDP, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(180, 220, 250, 290, 330)) +
+    labs(title = "MSRP - TDP",
+         x = "MSRP",
+         y = "TDP",
+         color = "Generation")
+
+
 ggsave("plot\\Intel\\intelMSRPtoTransistors.png", intelMSRPtoTransistors, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRPtoVRAM.png", intelMSRPtoVRAM, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRPtoSP.png", intelMSRPtoSP, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRPtoTMU.png", intelMSRPtoTMU, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRPtoROP.png", intelMSRPtoROP, width = 10, height = 12)
 ggsave("plot\\Intel\\intelMSRPtoConfig.png", intelMSRPtoConfig, width = 10, height = 12)
+ggsave("plot\\Intel\\intelMSRPtoFP16.png", intelMSRPtoFP16, width = 10, height = 12)
+ggsave("plot\\Intel\\intelMSRPtoTDP.png", intelMSRPtoTDP, width = 10, height = 12)
+
+
+intelGentoScore <- ggplot(df.intel, aes(x = Generation, y = Score, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - Score",
+         x = "Generation",
+         y = "Score",
+         color = "Generation")
+
+intelGentoFP16 <- ggplot(df.intel, aes(x = Generation, y = FP16, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - FP16",
+         x = "Generation",
+         y = "FP16",
+         color = "Generation")
+
+intelGentoTDP <- ggplot(df.intel, aes(x = Generation, y = TDP, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 300, by=10)) +
+    labs(title = "Generation - TDP",
+         x = "Generation",
+         y = "TDP",
+         color = "Generation")
+
+intelGentoVRAM <- ggplot(df.intel, aes(x = Generation, y = VRAM, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 32, by=2)) +
+    labs(title = "Generation - VRAM",
+         x = "Generation",
+         y = "VRAM",
+         color = "Generation")
+
+intelGentoTransistors <- ggplot(df.intel, aes(x = Generation, y = Transistors, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title= "Generation - Transistors",
+         x = "Generation",
+         y = "Transistors",
+         color = "Generation")
+
+intelGentoConfig <- ggplot(df.intel, aes(x = Generation, y = Config, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 5000, by=200)) +
+    labs(title = "Generation - Config",
+         x = "Generation",
+         y = "Config",
+         color = "Generation")
+
+ggsave("plot\\Intel\\intelGentoScore.png", intelGentoScore, width = 10, height = 12)
+ggsave("plot\\Intel\\intelGentoFP16.png", intelGentoFP16, width = 10, height = 12)
+ggsave("plot\\Intel\\intelGentoTDP.png", intelGentoTDP, width = 10, height = 12)
+ggsave("plot\\Intel\\intelGentoVRAM.png", intelGentoVRAM, width = 10, height = 12)
+ggsave("plot\\Intel\\intelGentoTransistors.png", intelGentoTransistors, width = 10, height = 12)
+ggsave("plot\\Intel\\intelGentoConfig.png", intelGentoConfig, width = 10, height = 12)
+
+
+
 
 print("Intel Complete")
 print("Plots Saved to plot/Intel")
@@ -497,12 +794,41 @@ amdConfig <- ggplot(df.amd, aes(x = Config, y = Score, color = Generation)) +
          y = "Score",
          color = "Generation")
 
+amdFP16 <- ggplot(df.amd, aes(x = FP16, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "FP16 - Score",
+         x = "FP16",
+         y = "Score",
+         color = "Generation")
+
+amdTDP <- ggplot(df.amd, aes(x = TDP, y = Score, color = Generation))+
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    labs(title = "TDP - Score",
+         x = "TDP",
+         y = "Score",
+         color = "Generation")
+
 ggsave("plot\\AMD\\amdSP.png", amdSP, width = 10, height = 12)
 ggsave("plot\\AMD\\amdTMU.png", amdTMU, width = 10, height = 12)
 ggsave("plot\\AMD\\amdROP.png", amdROP, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRP.png", amdMSRP, width = 10, height = 12)
 ggsave("plot\\AMD\\amdTransistors.png", amdTransistors, width = 10, height = 12)
 ggsave("plot\\AMD\\amdConfig.png", amdConfig, width = 10, height = 12)
+ggsave("plot\\AMD\\amdFP16.png", amdFP16, width = 10, height = 12)
+ggsave("plot\\AMD\\amdTDP.png", amdTDP, width = 10, height = 12)
+
 
 amdMSRPtoTransistors <- ggplot(df.amd, aes(x = MSRP, y = Transistors, color = Generation)) +
     geom_point()+
@@ -589,12 +915,135 @@ amdMSRPtoConfig <- ggplot(df.amd, aes(x = MSRP, y = Config, color = Generation))
          y = "Config",
          color = "Generation")
 
+amdMSRPtoFP16 <- ggplot(df.amd, aes(x = MSRP, y = FP16, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(seq(200, 1000, by = 200), 1100)) +
+    labs(title = "MSRP - FP16",
+         x = "MSRP",
+         y = "FP16",
+         color = "Generation")
+
+amdMSRPtoTDP <- ggplot(df.amd, aes(x = MSRP, y = TDP, color = Generation)) +
+    geom_point()+
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    geom_smooth(method = "lm", se = FALSE, aes(group = Generation)) +
+    scale_x_continuous(breaks = c(seq(200, 1000, by = 200), 1100)) +
+    labs(title = "MSRP - TDP",
+         x = "MSRP",
+         y = "TDP",
+         color = "Generation")
+
+
 ggsave("plot\\AMD\\amdMSRPtoTransistors.png", amdMSRPtoTransistors, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRPtoVRAM.png", amdMSRPtoVRAM, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRPtoSP.png", amdMSRPtoSP, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRPtoTMU.png", amdMSRPtoTMU, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRPtoROP.png", amdMSRPtoROP, width = 10, height = 12)
 ggsave("plot\\AMD\\amdMSRPtoConfig.png", amdMSRPtoConfig, width = 10, height = 12)
+ggsave("plot\\AMD\\amdMSRPtoFP16.png", amdMSRPtoFP16, width = 10, height = 12)
+ggsave("plot\\AMD\\amdMSRPtoTDP.png", amdMSRPtoTDP, width = 10, height = 12)
+
+
+
+
+amdGentoScore <- ggplot(df.amd, aes(x = Generation, y = Score, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - Score",
+         x = "Generation",
+         y = "Score",
+         color = "Generation")
+
+amdGentoFP16 <- ggplot(df.amd, aes(x = Generation, y = FP16, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title = "Generation - FP16",
+         x = "Generation",
+         y = "FP16",
+         color = "Generation")
+
+amdGentoTDP <- ggplot(df.amd, aes(x = Generation, y = TDP, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 300, by=10)) +
+    labs(title = "Generation - TDP",
+         x = "Generation",
+         y = "TDP",
+         color = "Generation")
+
+amdGentoVRAM <- ggplot(df.amd, aes(x = Generation, y = VRAM, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 32, by=2)) +
+    labs(title = "Generation - VRAM",
+         x = "Generation",
+         y = "VRAM",
+         color = "Generation")
+
+amdGentoTransistors <- ggplot(df.amd, aes(x = Generation, y = Transistors, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 20000, by=1000)) +
+    labs(title= "Generation - Transistors",
+         x = "Generation",
+         y = "Transistors",
+         color = "Generation")
+
+amdGentoConfig <- ggplot(df.amd, aes(x = Generation, y = Config, color = Generation)) +
+    geom_point() +
+    geom_text_repel(aes(label = GPU),
+                    size = 4,
+                    max.overlaps = Inf,
+                    box.padding = 1.2,
+                    segment.color = "#90888895") +
+    scale_y_continuous(breaks = seq(0, 5000, by=200)) +
+    labs(title = "Generation - Config",
+         x = "Generation",
+         y = "Config",
+         color = "Generation")
+
+ggsave("plot\\AMD\\amdGentoScore.png", amdGentoScore, width = 10, height = 12)
+ggsave("plot\\AMD\\amdGentoFP16.png", amdGentoFP16, width = 10, height = 12)
+ggsave("plot\\AMD\\amdGentoTDP.png", amdGentoTDP, width = 10, height = 12)
+ggsave("plot\\AMD\\amdGentoVRAM.png", amdGentoVRAM, width = 10, height = 12)
+ggsave("plot\\AMD\\amdGentoTransistors.png", amdGentoTransistors, width = 10, height = 12)
+ggsave("plot\\AMD\\amdGentoConfig.png", amdGentoConfig, width = 10, height = 12)
+
+
+
+
 
 print("AMD Complete")
 print("Plots Saved to plot/AMD")
