@@ -1124,6 +1124,22 @@ c25VRAMPlot<-ggplot(c25Sub, aes(x=MSRP, y=VRAM, color=Brand))+
          y="VRAM (GB)",
          color="Brand")
 
+c25TDPtoScorePlot<-ggplot(c25Sub, aes(x=TDP, y=Score, color=Brand))+
+    geom_point()+
+    geom_text_repel(aes(label=GPU),
+                    size=4,
+                    max.overlaps=Inf,
+                    box.padding=1.2,
+                    segment.color="#90888895")+
+    geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
+    scale_y_continuous(breaks=seq(0, 14000, by=1000))+
+    scale_x_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
+    labs(title="TDP - Score : 2025 GPU",
+         x="TDP (W)",
+         y="Score",
+         color="Brand")
+
 c25GentoScorePlot<-ggplot(c25Sub, aes(x=Generation, y=Score, color=Brand))+
     geom_point()+
     geom_text_repel(aes(label=GPU),
@@ -1133,6 +1149,7 @@ c25GentoScorePlot<-ggplot(c25Sub, aes(x=Generation, y=Score, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 14000, by=1000))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Score : 2025 GPU",
          x="Generation",
          y="Score",
@@ -1147,6 +1164,7 @@ c25GentoFP16 <- ggplot(c25Sub, aes(x=Generation, y=FP16, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 120, by=5))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - FP16 : 2025 GPU",
          x="Generation",
          y="FP16 (TFLOPS)",
@@ -1161,6 +1179,7 @@ c25GentoTDP <- ggplot(c25Sub, aes(x=Generation, y=TDP, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - TDP : 2025 GPU",
          x="Generation",
          y="TDP (W)",
@@ -1174,6 +1193,7 @@ c25GentoVRAM <- ggplot(c25Sub, aes(x=Generation, y=VRAM, color=Brand))+
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks=c(10, 12, 16))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - VRAM : 2025 GPU",
          x="Generation",
          y="VRAM (GB)",
@@ -1187,6 +1207,7 @@ c25GentoTransistors <- ggplot(c25Sub, aes(x=Generation, y=Transistors, color=Bra
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks = seq(0,200, by=5)) +
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Transistors : 2025 GPU",
          x="Generation",
          y="Transistors (B)",
@@ -1200,6 +1221,7 @@ c25GentoConfig <- ggplot(c25Sub, aes(x=Generation, y=Config, color=Brand))+
                     max.overlaps=Inf,
                     box.padding=1.2,
                     segment.color="#90888895")+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Config : 2025 GPU",
          x="Generation",
          y="Config",
@@ -1209,6 +1231,7 @@ c25GentoConfig <- ggplot(c25Sub, aes(x=Generation, y=Config, color=Brand))+
 
 ggsave("plot\\Universal\\2025GPU\\2025ScorePlot.png", c25ScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2025GPU\\2025VRAMPlot.png", c25VRAMPlot, width=10, height=12)
+ggsave("plot\\Universal\\2025GPU\\2025TDPtoScorePlot.png", c25TDPtoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2025GPU\\2025GentoScorePlot.png", c25GentoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2025GPU\\2025GentoFP16.png", c25GentoFP16, width=10, height=12)
 ggsave("plot\\Universal\\2025GPU\\2025GentoTDP.png", c25GentoTDP, width=10, height=12)
@@ -1274,6 +1297,22 @@ c22VRAMPlot<-ggplot(c22Sub, aes(x=MSRP, y=VRAM, color=Brand))+
          y="VRAM (GB)",
          color="Brand")
 
+c22TDPtoScorePlot<-ggplot(c22Sub, aes(x=TDP, y=Score, color=Brand))+
+    geom_point()+
+    geom_text_repel(aes(label=GPU),
+                    size=4,
+                    max.overlaps=Inf,
+                    box.padding=1.2,
+                    segment.color="#90888895")+
+    geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
+    scale_y_continuous(breaks=seq(0, 10000, by=500))+
+    scale_x_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
+    labs(title="TDP - Score : 2022-2024 GPU",
+         x="TDP (W)",
+         y="Score",
+         color="Brand")
+
 c22GentoScorePlot<-ggplot(c22Sub, aes(x=Generation, y=Score, color=Brand))+
     geom_point()+
     geom_text_repel(aes(label=GPU),
@@ -1283,6 +1322,7 @@ c22GentoScorePlot<-ggplot(c22Sub, aes(x=Generation, y=Score, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 10000, by=500))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Score : 2022-2024 GPU",
          x="Generation",
          y="Score",
@@ -1297,6 +1337,7 @@ c22GentoFP16 <- ggplot(c22Sub, aes(x=Generation, y=FP16, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 120, by=5))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - FP16 : 2022-2024 GPU",
          x="Generation",
          y="FP16 (TFLOPS)",
@@ -1311,6 +1352,7 @@ c22GentoTDP <- ggplot(c22Sub, aes(x=Generation, y=TDP, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - TDP : 2022-2024 GPU",
          x="Generation",
          y="TDP (W)",
@@ -1324,6 +1366,7 @@ c22GentoVRAM <- ggplot(c22Sub, aes(x=Generation, y=VRAM, color=Brand))+
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks=seq(8, 24, by=4))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - VRAM : 2022-2024 GPU",
          x="Generation",
          y="VRAM (GB)",
@@ -1337,6 +1380,7 @@ c22GentoTransistors <- ggplot(c22Sub, aes(x=Generation, y=Transistors, color=Bra
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks = seq(0,200, by=5)) +
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Transistors : 2022-2024 GPU",
          x="Generation",
          y="Transistors (B)",
@@ -1349,6 +1393,7 @@ c22GentoConfig <- ggplot(c22Sub, aes(x=Generation, y=Config, color=Brand))+
                     max.overlaps=Inf,
                     box.padding=1.2,
                     segment.color="#90888895")+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Intel"="#0071C5", "Nvidia"="#76B900"))+
     labs(title="Generation - Config : 2022-2024 GPU",
          x="Generation",
          y="Config",
@@ -1357,6 +1402,7 @@ c22GentoConfig <- ggplot(c22Sub, aes(x=Generation, y=Config, color=Brand))+
          
 ggsave("plot\\Universal\\2022-2024GPU\\2022-2024ScorePlot.png", c22ScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2022-2024GPU\\2022-2024VRAMPlot.png", c22VRAMPlot, width=10, height=12)
+ggsave("plot\\Universal\\2022-2024GPU\\2022-2024TDPtoScorePlot.png", c22TDPtoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2022-2024GPU\\2022-2024GentoScorePlot.png", c22GentoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2022-2024GPU\\2022-2024GentoFP16.png", c22GentoFP16, width=10, height=12)
 ggsave("plot\\Universal\\2022-2024GPU\\2022-2024GentoTDP.png", c22GentoTDP, width=10, height=12)
@@ -1416,6 +1462,22 @@ c20VRAMPlot<-ggplot(c20Sub, aes(x=MSRP, y=VRAM, color=Brand))+
          y="VRAM (GB)",
          color="Brand")
 
+c20TDPtoScorePlot<-ggplot(c20Sub, aes(x=TDP, y=Score, color=Brand))+
+    geom_point()+
+    geom_text_repel(aes(label=GPU),
+                    size=4,
+                    max.overlaps=Inf,
+                    box.padding=1.2,
+                    segment.color="#90888895")+
+    geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
+    scale_y_continuous(breaks=seq(0, 8000, by=500))+
+    scale_x_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
+    labs(title="TDP - Score : 2020-2022 GPU",
+         x="TDP (W)",
+         y="Score",
+         color="Brand")
+
 c20GentoScorePlot<-ggplot(c20Sub, aes(x=Generation, y=Score, color=Brand))+
     geom_point()+
     geom_text_repel(aes(label=GPU),
@@ -1425,6 +1487,7 @@ c20GentoScorePlot<-ggplot(c20Sub, aes(x=Generation, y=Score, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 8000, by=500))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Score : 2020-2022 GPU",
          x="Generation",
          y="Score",
@@ -1439,6 +1502,7 @@ c20GentoFP16 <- ggplot(c20Sub, aes(x=Generation, y=FP16, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 120, by=5))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - FP16 : 2020-2022 GPU",
          x="Generation",
          y="FP16 (TFLOPS)",
@@ -1453,6 +1517,7 @@ c20GentoTDP <- ggplot(c20Sub, aes(x=Generation, y=TDP, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - TDP : 2020-2022 GPU",
          x="Generation",
          y="TDP (W)",
@@ -1466,6 +1531,7 @@ c20GentoVRAM <- ggplot(c20Sub, aes(x=Generation, y=VRAM, color=Brand))+
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks=c(seq(4,16, by=4),10))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - VRAM : 2020-2022 GPU",
          x="Generation",
          y="VRAM (GB)",
@@ -1479,6 +1545,7 @@ c20GentoTransistors <- ggplot(c20Sub, aes(x=Generation, y=Transistors, color=Bra
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks = seq(0,200, by=10)) +    
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Transistors : 2020-2022 GPU",
          x="Generation",
          y="Transistors (B)",
@@ -1491,6 +1558,7 @@ c20GentoConfig <- ggplot(c20Sub, aes(x=Generation, y=Config, color=Brand))+
                     max.overlaps=Inf,
                     box.padding=1.2,
                     segment.color="#90888895")+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Config : 2020-2022 GPU",
          x="Generation",
          y="Config",
@@ -1500,6 +1568,7 @@ c20GentoConfig <- ggplot(c20Sub, aes(x=Generation, y=Config, color=Brand))+
 
 ggsave("plot\\Universal\\2020-2022GPU\\2020-2022ScorePlot.png", c20ScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2020-2022GPU\\2020-2022VRAMPlot.png", c20VRAMPlot, width=10, height=12)
+ggsave("plot\\Universal\\2020-2022GPU\\2020-2022TDPtoScorePlot.png", c20TDPtoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2020-2022GPU\\2020-2022GentoScorePlot.png", c20GentoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2020-2022GPU\\2020-2022GentoFP16.png", c20GentoFP16, width=10, height=12)
 ggsave("plot\\Universal\\2020-2022GPU\\2020-2022GentoTDP.png", c20GentoTDP, width=10, height=12)
@@ -1559,6 +1628,22 @@ c18VRAMPlot<-ggplot(c18Sub, aes(x=MSRP, y=VRAM, color=Brand))+
         y="VRAM (GB)",
         color="Brand")
 
+c18TDPtoScorePlot<-ggplot(c18Sub, aes(x=TDP, y=Score, color=Brand))+
+    geom_point()+
+    geom_text_repel(aes(label=GPU),
+                    size=4,
+                    max.overlaps=Inf,
+                    box.padding=1.2,
+                    segment.color="#90888895")+
+    geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
+    scale_y_continuous(breaks=seq(0, 6000, by=250))+
+    scale_x_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
+    labs(title="TDP - Score : 2018-2019 GPU",
+        x="TDP (W)",
+        y="Score",
+        color="Brand")
+
 c18GentoScorePlot<-ggplot(c18Sub, aes(x=Generation, y=Score, color=Brand))+
     geom_point()+
     geom_text_repel(aes(label=GPU),
@@ -1568,6 +1653,7 @@ c18GentoScorePlot<-ggplot(c18Sub, aes(x=Generation, y=Score, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 6000, by=250))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Score : 2018-2019 GPU",
         x="Generation",
         y="Score",
@@ -1582,6 +1668,7 @@ c18GentoFP16 <- ggplot(c18Sub, aes(x=Generation, y=FP16, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 120, by=5))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - FP16 : 2018-2019 GPU",
         x="Generation",
         y="FP16 (TFLOPS)",
@@ -1596,6 +1683,7 @@ c18GentoTDP <- ggplot(c18Sub, aes(x=Generation, y=TDP, color=Brand))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, aes(group=Brand))+
     scale_y_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - TDP : 2018-2019 GPU",
         x="Generation",
         y="TDP (W)",
@@ -1609,6 +1697,7 @@ c18GentoVRAM <- ggplot(c18Sub, aes(x=Generation, y=VRAM, color=Brand))+
                     box.padding=1.2,
                     segment.color="#90888895")+
     scale_y_continuous(breaks=c(seq(4, 8, by=2),11))+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - VRAM : 2018-2019 GPU",
         x="Generation",
         y="VRAM (GB)",
@@ -1621,6 +1710,8 @@ c18GentoTransistors <- ggplot(c18Sub, aes(x=Generation, y=Transistors, color=Bra
                     max.overlaps=Inf,
                     box.padding=1.2,
                     segment.color="#90888895")+
+    scale_y_continuous(breaks = seq(0,200, by=10)) + 
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Transistors : 2018-2019 GPU",
         x="Generation",
         y="Transistors (B)",
@@ -1633,6 +1724,7 @@ c18GentoConfig <- ggplot(c18Sub, aes(x=Generation, y=Config, color=Brand))+
                     max.overlaps=Inf,
                     box.padding=1.2,
                     segment.color="#90888895")+
+    scale_color_manual(values=c("AMD"="#ED1C24", "Nvidia"="#76B900"))+
     labs(title="Generation - Config : 2018-2019 GPU",
         x="Generation",
         y="Config",
@@ -1641,6 +1733,7 @@ c18GentoConfig <- ggplot(c18Sub, aes(x=Generation, y=Config, color=Brand))+
 
 ggsave("plot\\Universal\\2018-2019GPU\\2018-2019ScorePlot.png", c18ScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2018-2019GPU\\2018-2019VRAMPlot.png", c18VRAMPlot, width=10, height=12)
+ggsave("plot\\Universal\\2018-2019GPU\\2018-2019TDPtoScorePlot.png", c18TDPtoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2018-2019GPU\\2018-2019GentoScorePlot.png", c18GentoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\2018-2019GPU\\2018-2019GentoFP16.png", c18GentoFP16, width=10, height=12)
 ggsave("plot\\Universal\\2018-2019GPU\\2018-2019GentoTDP.png", c18GentoTDP, width=10, height=12)
@@ -1691,7 +1784,26 @@ allVRAMPlot<-ggplot(allSub, aes(x=MSRP, y=VRAM, color=Generation))+
     labs(title="MSRP - VRAM : All GPU",
          x="MSRP (USD)",
          y="VRAM (GB)",
-         color="Generation")         
+         color="Generation")    
+
+allTDPtoScorePlot<-ggplot(allSub, aes(x=TDP, y=Score, color=Generation))+
+    geom_point()+
+    geom_text_repel(aes(label=GPU),
+                    size=3,
+                    max.overlaps=Inf,
+                    box.padding=1.35,
+                    force=1.8,
+                    segment.color="#90888895")+
+    geom_smooth(method="lm", se=FALSE, linewidth = 0.5, aes(group=Generation))+
+    scale_y_continuous(breaks=seq(0, 14000, by=500))+
+    scale_x_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
+    labs(title="TDP - Score : All GPU",
+         x="TDP (W)",
+         y="Score",
+         color="Generation")     
 
 allGentoScorePlot<-ggplot(allSub, aes(x=Generation, y=Score, color=Generation))+
     geom_point()+
@@ -1703,6 +1815,9 @@ allGentoScorePlot<-ggplot(allSub, aes(x=Generation, y=Score, color=Generation))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, linewidth = 0.5, aes(group=Generation))+
     scale_y_continuous(breaks=seq(0, 14000, by=500))+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - Score : All GPU",
          x="Generation",
          y="Score",
@@ -1718,6 +1833,9 @@ allGentoFP16 <- ggplot(allSub, aes(x=Generation, y=FP16, color=Generation))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, linewidth = 0.5, aes(group=Generation))+
     scale_y_continuous(breaks=seq(0, 120, by=5))+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - FP16 : All GPU",
          x="Generation",
          y="FP16 (TFLOPS)",
@@ -1733,6 +1851,9 @@ allGentoTDP <- ggplot(allSub, aes(x=Generation, y=TDP, color=Generation))+
                     segment.color="#90888895")+
     geom_smooth(method="lm", se=FALSE, linewidth = 0.5, aes(group=Generation))+
     scale_y_continuous(breaks=seq(0, 1000, by=25))+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - TDP : All GPU",
          x="Generation",
          y="TDP (W)",
@@ -1747,6 +1868,9 @@ allGentoVRAM <- ggplot(allSub, aes(x=Generation, y=VRAM, color=Generation))+
                     force=1.8,
                     segment.color="#90888895")+
     scale_y_continuous(breaks=c(seq(4, 12, by=2),11,16,20,24,32))+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - VRAM : All GPU",
          x="Generation",
          y="VRAM (GB)",
@@ -1761,6 +1885,9 @@ allGentoTransistors <- ggplot(allSub, aes(x=Generation, y=Transistors, color=Gen
                     force=1.8,
                     segment.color="#90888895")+
     scale_y_continuous(breaks = seq(0,200, by=5)) +
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - Transistors : All GPU",
          x="Generation",
          y="Transistors (B)",
@@ -1774,6 +1901,9 @@ allGentoConfig <- ggplot(allSub, aes(x=Generation, y=Config, color=Generation))+
                     box.padding=1.35,
                     force=1.8,
                     segment.color="#90888895")+
+    scale_color_manual(values=c("9000"="#ED1C24","7000"="#ED1C24","6000"="#ED1C24","5000"="#ED1C24", 
+                                "B"="#0071C5","A"="#0071C5",
+                                "50"="#76B900","40"="#76B900","30"="#76B900","20"="#76B900"))+
     labs(title="Generation - Config : All GPU",
          x="Generation",
          y="Config",
@@ -1781,6 +1911,7 @@ allGentoConfig <- ggplot(allSub, aes(x=Generation, y=Config, color=Generation))+
 
 ggsave("plot\\Universal\\AllGPU\\AllScorePlot.png", allScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\AllGPU\\AllVRAMPlot.png", allVRAMPlot, width=10, height=12)
+ggsave("plot\\Universal\\AllGPU\\AllTDPtoScorePlot.png", allTDPtoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\AllGPU\\AllGentoScorePlot.png", allGentoScorePlot, width=10, height=12)
 ggsave("plot\\Universal\\AllGPU\\AllGentoFP16.png", allGentoFP16, width=10, height=12)
 ggsave("plot\\Universal\\AllGPU\\AllGentoTDP.png", allGentoTDP, width=10, height=12)
