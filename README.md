@@ -156,7 +156,7 @@ For each combined subset, the script generates and saves plots that compare `MSR
 ---
 
 ## 8. File Saving Structure
-The script saves all generated plots into various subfolders under a `plot\\` directory:
+The script saves all generated plots into various subfolders under a `plot` directory:
 
 ```
 plot
@@ -210,8 +210,8 @@ plot
    - Watch for printed messages like “Starting...”, “Nvidia Complete”, “Plots Saved to plot/...”, etc.
 
 4. **Check the Output**  
-   - After execution, explore the `plot\\` directory.
-   - Each brand has its own folder, and the universal comparisons are inside `plot\\Universal\\`.
+   - After execution, explore the `plot` directory.
+   - Each brand has its own folder, and the universal comparisons are inside `plot/Universal/`.
 
 5. **Further Customization**  
    - Edit `scale_x_continuous()` / `scale_y_continuous()` to change axis breaks or ranges.
