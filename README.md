@@ -3,21 +3,6 @@
 
 This script provides a comprehensive solution for plotting and comparing GPU specifications from Intel, AMD, and NVIDIA. It reads data from CSV files, applies optional filtering criteria (budget, VRAM, TDP), and generates a wide range of plots grouped by brand, generation, and universal comparisons across multiple generations. 
 
-Below is a step-by-step description of how the script works and how to use it.
-
----
-
-## Table of Contents
-1. [Overview](#overview)
-2. [Prerequisites](#prerequisites)
-3. [Script Configuration](#script-configuration)
-4. [Data Filtering Logic](#data-filtering-logic)
-5. [Plot Generation](#plot-generation)
-6. [Detailed Plots](#detailed-plots)
-7. [Brand Comparisons](#brand-comparisons)
-8. [File Saving Structure](#file-saving-structure)
-9. [Usage Instructions](#usage-instructions)
-
 ---
 
 ## 1. Overview
@@ -216,23 +201,19 @@ plot
    install.packages("useful")
    ```
 
-2. **Prepare the CSV Files**  
-   - Place `Intel.csv`, `AMD.csv`, `NVIDIA.csv` inside a `data\\` folder.
-   - Ensure each file has the necessary columns (GPU, Generation, MSRP, Score, VRAM, TDP, FP16, etc.).
-
-3. **Adjust the Script Parameters** (optional)  
+2. **Adjust the Script Parameters** (optional)  
    - Set `budgetCard`, `VRAMRequired`, `TDPConstraint`, `detailed` to `TRUE` or `FALSE` as needed.
    - Update `budget`, `VRAMMin`, `TDPMax` to desired values.
 
-4. **Run the Script**  
+3. **Run the Script**  
    - Launch R or RStudio and execute the script.
    - Watch for printed messages like “Starting...”, “Nvidia Complete”, “Plots Saved to plot/...”, etc.
 
-5. **Check the Output**  
+4. **Check the Output**  
    - After execution, explore the `plot\\` directory.
    - Each brand has its own folder, and the universal comparisons are inside `plot\\Universal\\`.
 
-6. **Further Customization**  
+5. **Further Customization**  
    - Edit `scale_x_continuous()` / `scale_y_continuous()` to change axis breaks or ranges.
    - Add or remove `geom_smooth()` calls if you don’t want linear regression lines.
    - Adjust the color mapping, label size, or any ggplot2 parameters as you see fit.
